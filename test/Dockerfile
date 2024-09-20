@@ -1,0 +1,1 @@
+FROM sheldonlee/ubuntu2204_py312:latest
