@@ -28,3 +28,5 @@ RUN cd /usr/src \
 
 # Update alternatives to use Python 3.12
 RUN update-alternatives --install /usr/bin/python python /usr/local/bin/python3.12 1
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
