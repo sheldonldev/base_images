@@ -9,7 +9,6 @@ fi
 namespace=sheldonlee
 name=ubuntu2204_py312
 image_name=$namespace/$name:$tag
-source config.sh
 
 echo "build docker image with tag: $image_name"
 
