@@ -1,2 +1,2 @@
 #!/bin/bash
-docker login  -u sheldonlee
+docker login -u sheldonlee
