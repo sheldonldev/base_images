@@ -1,17 +1,27 @@
 #!/bin/bash
 
-tag=$1
-repo_addr=$2
+image_dir=$1
+tag=$2
+repo_addr=$3
+
+if [ -z $image_dir ]; then
+    echo 'Error: need input image directory'
+    exit 1
+fi
+
+if [ ! -d $image_dir ]; then
+    echo "Error: $image_dir is not a valid directory"
+    exit 1
+fi
 
 if [ -z $tag ]; then
     echo 'Error: need input image tag'
     exit 1
 fi
-
-script_dir=$(dirname "$(readlink -f "$0")")
+image_dir=$(readlink -f "$image_dir")
 
 namespace=sheldonlee
-name=$(basename "$script_dir")
+name=$(basename "$image_dir")
 image_name=$namespace/$name:$tag
 
 if [ -z $repo_addr]; then
@@ -23,6 +33,6 @@ fi
 
 echo "build docker image with tag: $image_name"
 
-docker build -t $image_name -f Dockerfile $script_dir
+docker build -t $image_name -f Dockerfile $image_dir
 docker tag $image_name $repo_path
 docker push $repo_path
