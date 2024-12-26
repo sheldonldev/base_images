@@ -1,2 +1,1 @@
-script_dir=$(dirname "$(dirname "$(readlink -f "$0")")")/build_and_push.sh
-echo $script_dir
+docker build -t sheldonlee/py312:latest -f /mnt/ssd1/repos/base_images/images/ie/py312/Dockerfile /mnt/ssd1/repos/base_images/images/ie/py312
