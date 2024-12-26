@@ -1,2 +1,2 @@
 #!/bin/bash
-source "$(dirname "$(dirname "$script_dir")")/build_and_push.sh"
+source $(dirname "$(dirname "$(readlink -f "$0")")")/build_and_push.sh
