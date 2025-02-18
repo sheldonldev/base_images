@@ -1,8 +1,8 @@
 #!/bin/bash
 
-image_dir=$1
-tag=$2
-repo_addr=$3
+image_dir=$1 # 镜像 Dockerfile 所处的文件夹
+tag=$2       # 版本号
+repo_addr=$3 # 推送对象为 docker hub 时可以不用填
 
 if [ -z $image_dir ]; then
     echo 'Error: need input image directory'
