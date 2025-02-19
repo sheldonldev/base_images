@@ -9,10 +9,12 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# install before python compiling
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get -y install build-essential \
         zlib1g-dev \
+        liblzma-dev \
         libncurses5-dev \
         libgdbm-dev \ 
         libnss3-dev \
@@ -21,10 +23,13 @@ RUN apt-get update -y \
         libffi-dev \
         libsqlite3-dev \
         libbz2-dev \
+        libmagic1 \
         wget \
     && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get purge -y imagemagick imagemagick-6-common 
+    && apt-get purge -y imagemagick imagemagick-6-common \
+    && rm -rf /var/lib/apt/lists/*
 
+# install python
 RUN cd /usr/src \
     && wget https://www.python.org/ftp/python/3.12.8/Python-3.12.8.tgz \
     && tar -xzf Python-3.12.8.tgz \
@@ -34,9 +39,6 @@ RUN cd /usr/src \
 
 RUN update-alternatives --install /usr/bin/python python /usr/local/bin/python3.12 1
 
+# install pytorch
 COPY requirements.txt /requirements.txt
 RUN python3.12 -m pip install -r requirements.txt --no-cache-dir
-
-RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y libmagic1
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
