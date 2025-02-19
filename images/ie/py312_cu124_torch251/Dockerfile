@@ -9,22 +9,6 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# # Install Python 3.12 and necessary packages
-# RUN apt-get update && \
-#     apt-get install -y --no-install-recommends \
-#     software-properties-common && \
-#     add-apt-repository ppa:deadsnakes/ppa && \
-#     apt-get update && \
-#     apt-get install -y --no-install-recommends \
-#     python3.12 \
-#     python3-distutils \
-#     python3-pip && \
-#     rm -rf /var/lib/apt/lists/*
-
-# # Ensure pip points to Python 3.12
-# RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1 && \
-#     python3 -m pip install --upgrade pip
-
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get -y install build-essential \
@@ -52,3 +36,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/local/bin/python3.
 
 COPY requirements.txt /requirements.txt
 RUN python3.12 -m pip install -r requirements.txt --no-cache-dir
+
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y libmagic1
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
