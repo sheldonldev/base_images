@@ -4,7 +4,7 @@ Manage my own images on docker repos.
 
 ## 使用方法
 
-- 运行下面脚本可以打包镜像并推送到我的 dockerhub
+- 运行下面脚本可以打包镜像并推送到我的 docker hub
 
     ```sh
     bash build_and_push.sh [目标 Dockerfile 的文件夹路径] [tag]
@@ -21,11 +21,11 @@ Manage my own images on docker repos.
 
 ## 资源
 
-### 国内 dockerhub 代理池
+### 国内 docker hub 代理池
 
 - <https://www.coderjia.cn/archives/dba3f94c-a021-468a-8ac6-e840f85867ea>
 
-### docker 安装 
+### docker 安装
 
 - <https://docs.docker.com/engine/install/ubuntu/>
 
@@ -33,11 +33,10 @@ Manage my own images on docker repos.
 
 - <https://docs.nvidia.com/ai-enterprise/deployment/vmware/latest/docker.html>
 
-
 ### python 安装包
 
 - <https://www.python.org/ftp/python/>
- 
+
 ### CUDA 镜像
 
 - <https://hub.docker.com/r/nvidia/cuda/tags>
